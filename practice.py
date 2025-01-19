@@ -90,7 +90,6 @@ def solution(money):
 # 나머지 연산자 %
 # 제곱 연산자 **
 
-"""
 
 # 코딩테스트 기초 트레이닝 - 꼬리 문자열
 # 문자열 리스트 str_list와 제외하려는 문자열 ex가 주어질 때,
@@ -106,7 +105,7 @@ def solution(str_list, ex):
 
 # 부분 문자열 또한 다음과 같이 해결가능
 # 문자열 my_string 과 target이 매개변수로 주어질 때,
-# target이 문자열 my_string의 부분 문자열이라면 1 아니면 0을 retrun
+# target이 문자열 my_string의 부분 문자열이라면 1 아니면 0을 return
 
 
 def solution(my_string, target):
@@ -133,7 +132,7 @@ def solution(arr, delete_list):
 # 문자 변환 = chr()
 # 불리언 변환 = bool() : 숫자는 -인지 아닌지에 따라서 결정 / 문자는 비었는지 안 비었는지에 따라서 결정
 
-# 정수 n이 주어질 때, n을 문자열로 변환하여 retrun
+# 정수 n이 주어질 때, n을 문자열로 변환하여 return
 
 
 def solution(n):
@@ -174,10 +173,11 @@ def solution(n_str):
 
 def solution(num_str):
     return sum(map(int, list(num_str)))
+    
 # list로 변환하지 않아도 됨
 # map 함수는 주어진 함수를 반복 가능한 객체(iterable)의 모든 항목에 적용하고, 결과를 반환합니다.
 # 여기서 문자열도 시퀀스이기에 당연히 반복 가능한 객체이며, 때문에 각 문자에 대해 int 함수를 적용할 수 있습니다.
-
+# num_str 자체가 iterable이기 때문에 list로 변환하는 작업은 꼭 필요한 것은 아니다.
 
 def solution(num_str):
     answer = 0
@@ -196,3 +196,200 @@ def solution(num_str):
 # map(function, iterable)
 # map() 함수는 여러 개의 데이터를 받아서 각 요소에 함수(function)를 적용한 결과를 반환한다.
 # iterable 객체를 입력으로 받을 수 있다.
+"""
+
+# 코딩테스트 기초 테스트 - 뒤에서 5등 위로
+# 정수로 이루어진 리스트 num_list가 주어집니다.
+# num_list에서 가장 작은 5개의 수를 제외한 수들을 오름차순으로 담은 리스트를 return하도록 solution 함수를 완성해주세요.
+
+
+def solution(num_list):
+    num_list.sort()
+    return num_list[5:]
+
+
+def solution(num_list):
+    return sorted(num_list[5:])
+
+# sort() 함수 : list.sort()로 사용이 되며 list 객체 자체를 정렬해주는 함수입니다.
+# sorted() : 순서대로 정렬, 정렬된 리스트를 반환
+# 기본값은 오름차순 정렬, reverse=True 는 내림차순 정렬 key = '조건' : key 옵션에 지정된 함수의 결과에 따라 정렬
+# reverse() 함수 : 리스트를 거꾸로 뒤집는다. desc 정렬 X
+# reversed() : 거꾸로 뒤집기, iteravle한 객체를 반환하기 때문에 list로 한번 더 변형 필요
+
+
+# 슬라이싱 [시작 인덱스 : 끝 인덱스]
+# 콜론 왼쪽 숫자 = 우리가 추출하기 원하는 시작 인덱스
+# 콜론 오른쪽에 써주는 숫자 = 우리가 추출하기 원하는 끝 인덱스 + 1
+# [:] 처음부터 끝까지
+# [start:] start오프셋(인덱스)부터 끝까지
+# [:end] 처음부터 end-1 오프셋(인덱스)까지
+# [start: end] start오프셋부터 end-1 오프셋(인덱스)까지
+# [start: end : step] step만큼 문자를 건너뛰면서, 위와 동일하게 추출
+
+# 코딩 기초 트레이닝 - 배열의 길이에 따라 다른 연산하기
+# 정수 배열 arr과 정수 n이 매개변수로 주어집니다.
+# arr의 길이가 홀수라면 arr의 모든 짝수 인덱스 위치에 n을 더한 배열을,
+# arr의 길이가 짝수라면 arr의 모든 홀수 인덱스 위치에 n을 더한 배열을
+# return 하는 solution 함수를 작성해 주세요.
+
+def solution(arr, n):
+    if len(arr) % 2 == 0:
+        for i in range(0, len(arr), 2):
+            arr[i] += n
+    else:
+        for i in range(1, range(arr), 2):
+            arr[i] += n
+    return arr
+
+# 다른 사람 풀이
+
+
+def solution(arr, n):
+    N = len(arr)
+    if N % 2:
+        for i in range(0, N, 2):
+            arr[i] += n
+    else:
+        for i in range(1, N, 2):
+            arr[i] += n
+    return arr
+
+
+def solution(arr, n):
+    answer = []
+    if len(arr) % 2 == 0:
+        for idx, value in enumerate(arr):
+            if idx % 2 == 1:
+                answer.append(value+n)
+            else:
+                answer.append(value)
+    else:
+        for idx, value in enumerate(arr):
+            if idx % 2 == 0:
+                answer.append(value+n)
+            else:
+                answer.append(value)
+
+    return answer
+
+# enumerate(iterable, start=0) 함수 :
+# 반복 가능한 객체를 인자로 받아서 해당 객체의 요소들을 순회하면서 각 요소의 인덱스와 값을 순서쌍으로 반환
+# iterable : 반복 가능한 객체 (list, tuple, str, dictionary)
+# start : 인덱스의 시작값을 설정, 기본값은 0
+# for 문과 주로 함께 사용됨
+# for idx, value in enumerate(arr):
+# 0 49
+# 1 12 형식으로 나오게 됨
+# 따라서 전체 if문에서 짝수 판별, 다음 for문에서 idx가 홀수 판별 값 넣기 진행
+
+# 코딩 기초 테스트 - 배열 비교하기
+# 두 배열의 길이가 다르다면, 배열의 길이가 긴 쪽이 더 큽니다.
+# 배열의 길이가 같다면 각 배열에 있는 모든 원소의 합을 비교하여
+# 다르다면 더 큰 쪽이 크고, 같다면 같습니다.
+# 두 정수 배열 arr1, arr2가 주어질 때
+# arr2가 크다면 -1 , arr1이 크다면 1, 두 배열이 같다면 0을 return
+
+
+def solution(arr1, arr2):
+    n1 = len(arr1)
+    n2 = len(arr2)
+    s1 = sum(arr1)
+    s2 = sum(arr2)
+    if n1 > n2:
+        return 1
+    elif n1 < n2:
+        return -1
+    else:
+        if s1 > s2:
+            return 1
+        elif s1 < s2:
+            return -1
+        else:
+            return 0
+
+# 다른 사람 풀이
+
+
+def solution(arr1, arr2):
+    return (len(arr1) > len(arr2)) - (len(arr2) > len(arr1)) or (sum(arr1) > sum(arr2)) - (sum(arr2) > sum(arr1))
+
+# 코딩 기초 테스트 - 배열의 원소만큼 추가하기
+# 양의 정수 배열 arr가 매개변수로 주어질 때,
+# arr의 앞에서부터 차례대로 원소를 보면서 원소가 a라면 X의 맨 뒤에
+# a를 a번 추가하는 일을 반복한 뒤, 배열 X를 return
+
+
+def solution(arr):
+    answer = []
+    for i in arr:
+        answer += [i]*i
+    return answer
+
+# 다른 사람 풀이
+
+
+def solution(arr):
+    answer = []
+    for i in range(len(arr)):
+        for j in range(arr[i]):
+            answer.append(arr[i])
+    return answer
+
+
+def solution(arr):
+    answer = []
+    for x in arr:
+        for i in range(x):
+            answer.append(x)
+    return answer
+
+# 안 풀었던 코딩테스트 입문 - 세균 증식
+# 1시간에 2배만큼 증식하는 세균.
+# 처음 세균의 마리수 n 과 경과한 시간 t가 주어질 때, t시간 후의 세균 수를 return
+
+
+def solution(n, t):
+    return n * (2 ** t)
+
+# 다른 사람 풀이
+
+
+def solution(n, t):
+    return n << t
+
+# 비트 시프트 (<< , >>)
+# 왼쪽 시프트 연산자(<<) : 2를 곱한 갓과 같은 효과 ex) n << m : m * 2의 m승
+# 오른쪽 시피트 연산자(>>) : 2로 나눈 것과 같은 효과 ex) n >> m : n/2의 m승
+
+
+# 자릿수 더하기
+
+def solution(n):
+    answer = 0
+    for i in str(n):
+        answer += int(i)
+    return answer
+
+
+def solution(n):
+    return sum(map(int, str(n)))
+#   retrun sum(list(map(int,list(str(n)))))
+
+
+def solution(n):
+    return sum(int(i) for i in str(n))
+
+# 특정 문자열 제거
+
+
+def solution(my_string, letter):
+    return my_string.replace(letter, '')
+
+
+def solution(my_string, letter):
+    answer = ''
+    for string in my_string:
+        if string != letter:
+            answer += string
+    return answer
