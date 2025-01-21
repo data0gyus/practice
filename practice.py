@@ -196,7 +196,6 @@ def solution(num_str):
 # map(function, iterable)
 # map() 함수는 여러 개의 데이터를 받아서 각 요소에 함수(function)를 적용한 결과를 반환한다.
 # iterable 객체를 입력으로 받을 수 있다.
-"""
 
 # 코딩테스트 기초 테스트 - 뒤에서 5등 위로
 # 정수로 이루어진 리스트 num_list가 주어집니다.
@@ -410,3 +409,78 @@ else:
 
 a = int(input())
 print(f"{a} is odd" if a % 2 else f"{a} is even")
+
+"""
+
+# 2025.01.21
+# 문자열 바꿔서 찾기
+
+
+def solution(myString, pat):
+    myString = myString.replace("A", "C")
+    myString = myString.replace("B", "A")
+    myString = myString.replace("B", "A")
+
+    if pat in myString:
+        return 1
+    else:
+        return 0
+
+
+# x 사이의 개수
+def solution(myString):
+    answer = []
+    myString = myString.split('x')
+    for i in range(len(myString)):
+        answer.append(len(myString[i]))
+    # for i in myString:
+    #   answer.append(len(i))
+    return answer
+
+# 공백으로 구분하기 2
+
+
+def solution(my_string):
+    return my_string.split()
+
+# ad 제거하기 - 배열 내의 문자열 중 'ad'라는 부분 문자열을 포함하고 있는 문자열은 제거
+
+
+def solution(strArr):
+    return [x for x in strArr if 'ad' not in x]
+
+
+def solution(strArr):
+    answer = []
+    for i in strArr:
+        if 'ad' not in i:
+            answer.append(i)
+        else:
+            continue
+    return answer
+
+# 특정한 문자를 대문자로 바꾸기
+
+
+def solution(my_string, alp):
+    return my_string.replace(alp, alp.upper())
+
+
+def solution(my_string, alp):
+    answer = ''
+    for i in my_string:
+        if i == alp:
+            answer += i.upper()
+        else:
+            answer += i
+    return answer
+
+
+def solution(my_string, alp):
+    answer = []
+    for x in my_string:
+        if x == alp:
+            answer.append(x.upper())
+        else:
+            answer.append()
+    return ''.join(answer)
