@@ -410,7 +410,6 @@ else:
 a = int(input())
 print(f"{a} is odd" if a % 2 else f"{a} is even")
 
-"""
 
 # 2025.01.21
 # 문자열 바꿔서 찾기
@@ -484,3 +483,238 @@ def solution(my_string, alp):
         else:
             answer.append()
     return ''.join(answer)
+
+"""
+
+# 배열에서 문자열 대소문자 변환하기
+
+
+def solution(strArr):
+    for i in range(len(strArr)):
+        if i % 2 == 0:
+            strArr[i] = strArr[i].lower()
+            strArr[i-1] = strArr[i-1].upper()
+    return strArr
+
+# 다른 사람 풀이
+
+
+def solution(strArr):
+    answer = []
+    for i in range(len(strArr)):
+        if i % 2 == 0:
+            answer.append(strArr[i].upper())
+        else:
+            answer.append(strArr[i].lower())
+    return answer
+
+
+def solution(strArr):
+    return [s.lower() if i % 2 == 0 else s.upper() for i, s in enumerate(strArr)]
+
+# 소문자로 바꾸기 & 대문자로 바꾸기
+
+
+def solution(myString):
+    return myString.lower()
+    return myString.upper()
+
+# 원하는 문자열 찾기
+
+
+def solution(myString, pat):
+    myString = myString.upper()
+    pat = pat.upper()
+    if pat in myString:
+        return 1
+    else:
+        return 0
+
+# 다른 사람 풀이
+
+
+def solution(myString, pat):
+    return int(pat.lower() in myString.lower())
+
+# 조건에 맞게 수열 변환하기 1
+
+
+def solution(arr):
+    answer = []
+    for i in arr:
+        if i >= 50 and i % 2 == 0:
+            i = i/2
+            answer.append(i)
+            # answer.append(i/2)
+            # answer.append(i//2)
+        elif i < 50 and i % 2 != 0:
+            i = i * 2
+            answer.append(i)
+            # answer.append(i*2)
+        else:
+            answer.append(i)
+    return answer
+
+# n보다 커질 때까지 더하기
+
+
+def solution(numbers, n):
+    answer = 0
+    for i in numbers:
+        if answer > n:
+            return answer
+        else:
+            answer += i
+    return answer
+
+# 다른 사람 풀이
+
+
+def solution(numbers, n):
+    answer = 0
+    i = 0
+    while answer <= n:
+        answer += numbers[i]
+        i += 1
+    return answer
+
+# 할 일 목록
+
+
+def solution(todo_list, finished):
+    answer = []
+    for i, v in enumerate(finished):
+        if not v:
+            answer.append(todo_list[i])
+    # for i in range(len(finished)):
+    #   if not finished[i]: answer.append(todo_list[i])
+        return answer
+
+# 다른 사람 풀이
+
+
+def solution(todo_list, finished):
+    return [work for idx, work in enumerate(todo_list) if not finished[idx]]
+    # return [x for x, b in zip(todo_list, finished) if not b]
+
+# 5명씩
+
+
+def solution(names):
+    return [names[i] for i in range(0, len(names), 5)]
+
+# 다른 사람 풀이
+
+
+def solution(names):
+    return names[::5]
+
+
+def solution(names):
+    answer = []
+    for i in range(len(names)):
+        if i % 5 == 0:
+            answer.append(names[i])
+    return answer
+
+# 홀수 vs 짝수
+
+
+def solution(num_list):
+    sum1 = 0
+    sum2 = 0
+    for i in range(len(num_list)):
+        if i % 2 == 0:
+            sum1 += num_list[i]
+        else:
+            sum2 += num_list[i]
+    if sum1 > sum2:
+        return sum1
+    else:
+        return sum2
+
+# 다른 사람 풀이
+
+
+def solution(num_list):
+    even = 0
+    odd = 0
+
+    for i, e in enumerate(num_list):
+        if i % 2 == 0:
+            even += e
+        else:
+            odd += e
+    return max(even, odd)
+
+
+def solution(num_list):
+    return max(sum(num_list[::2], sum(num_list[1::2])))
+
+# n개 간격의 원소들
+
+
+def solution(num_list, n):
+    return [num_list[i] for i in range(0, len(num_list), n)]
+
+# 다른 사람 풀이
+
+
+def solution(num_list, n):
+    return num_list[::n]
+
+
+def solution(num_list, n):
+    answer = []
+    for i in range(0, len(num_list), n):
+        answer.append(num_list[i])
+    return answer
+
+
+# n 번째 원소까지
+
+def solution(num_list, n):
+    return num_list[:n]
+
+
+# 순서 바꾸기
+
+def solution(num_list, n):
+    return num_list[n:] + num_list[:n]
+
+
+# n 번째 원소부터
+
+def solution(num_list, n):
+    return num_list[n-1:]
+
+# 첫 번재로 나오는 음수
+
+
+def solution(num_list):
+    for i, v in enumerate(num_list):
+        if v < 0:
+            return i
+    return -1
+
+
+def solution(num_list):
+    for i in range(len(num_list)):
+        if num_list[i] < 0:
+            return i
+    return -1
+
+
+# 가까운 1 찾기
+def solution(arr, idx):
+    for i, v in enumerate(arr):
+        if i >= idx and v == 1:
+            return i
+    return -1
+
+
+def solution(arr, idx):
+    for i in range(idx, len(arr)):
+        if arr[i] == 1:
+            return i
+    return -1
