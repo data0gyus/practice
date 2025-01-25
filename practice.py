@@ -484,7 +484,6 @@ def solution(my_string, alp):
             answer.append()
     return ''.join(answer)
 
-"""
 
 # 배열에서 문자열 대소문자 변환하기
 
@@ -837,4 +836,54 @@ def solution(n):
         else:
             n = 3 * n + 1
     answer.append(n)
+    return answer
+
+"""
+# 수 조작하기 1
+
+
+def solution(n, control):
+    answer = n
+    con = {'w': +1, 's': -1, 'd': +10, 'a': -10}
+    for i in control:
+        answer += con[i]
+    return answer
+
+
+def solution(n, control):
+    for c in control:
+        if c == 'w':
+            n += 1
+        elif c == 's':
+            n -= 1
+        elif c == 'd':
+            n += 10
+        else:
+            n -= 10
+    return n
+
+# 수 조작하기 2
+
+
+def solution(numLog):
+    answer = ''
+    con = {1: 'w', -1: 's', 10: 'd', -10: 'a'}
+    for i, v in enumerate(numLog):
+        if i != len(numLog)-1:
+            answer += con[numLog[i+1]-numLog[i]]
+    return answer
+
+
+def solution(numLog):
+    answer = ''
+    for i in range(1, len(numLog)):
+        diff = numLog[i] - numLog[i-1]
+        if diff == 1:
+            answer += 'w'
+        elif diff == -1:
+            answer += 's'
+        elif diff == 10:
+            answer += 'd'
+        elif diff == -10:
+            answer += 'a'
     return answer
