@@ -718,3 +718,123 @@ def solution(arr, idx):
         if arr[i] == 1:
             return i
     return -1
+
+# 카운트 다운
+
+
+def solution(start_num, end_num):
+    answer = [i for i in range(start_num, end_num-1, -1)]
+    return answer
+
+
+def solution(start_num, end_num):
+    answer = []
+    for i in range(start_num, end_num-1, -1):
+        answer.append(i)
+    return answer
+
+# 배열 만들기
+
+
+def solution(n, k):
+    answer = []
+    for i in range(n+1):
+        if i % k == 0:
+            answer.append(i)
+    return answer
+
+
+def solution(n, k):
+    return [i for i in range(k, n+1, k)]
+
+# 접두사인지 확인하기
+
+
+def solution(my_string, is_prefix):
+    tmp = [my_string[:i] for i in range(len(my_string))]
+    for i in tmp:
+        if is_prefix == i:
+            return 1
+    else:
+        return 0
+
+
+def solution(my_string, is_prefix):
+    return int(my_string.startwith(is_prefix))
+
+# 문자열 앞의 n글자
+
+
+def solution(my_string, n):
+    return my_string[:n]
+    # return ''.join(my_string[:n])
+
+# 접미사인지 확인하기
+
+
+def solution(my_string, is_suffix):
+    return int(my_string.endswith(is_suffix))
+
+
+def solution(my_string, is_suffix):
+    answer = 0
+    for i in range(len(my_string)):
+        if my_string[i:] == is_suffix:
+            answer = 1
+    return answer
+
+# 접미사 배열
+
+
+def solution(my_string):
+    answer = []
+    for i in range(len(my_string)):
+        answer.append(my_string[i:])
+    answer.sort()
+    return answer
+
+# 부분 문자열을 이어 붙여 문자열 만들기
+
+
+def solution(my_strings, parts):
+    answer = ''
+    for i, v in enumerate(parts):
+        answer += my_strings[i][v[0]:v[1]+1]
+    return answer
+
+
+def solution(my_strings, parts):
+    answer = ''
+    for i in range(len(parts)):
+        l, r = parts[i]
+        answer += my_strings[i][l:r+1]
+    return answer
+
+# 글자 이어 붙여 문자열 만들기
+
+
+def solution(my_string, index_list):
+    answer = ''
+    for i in index_list:
+        answer += my_string[i]
+    return answer
+
+
+def solution(my_string, index_list):
+    return ''.join([my_string[idx] for idx in index_list])
+
+# 콜라츠 수열 만들기
+
+
+def solution(n):
+    answer = []
+    while n != 1:
+        # while n > 1 :
+        answer.append(n)
+        if n % 2 == 0:
+            n = n / 2
+            # n // 2
+        else:
+            n = 3 * n + 1
+    answer.append(n)
+    return answer
