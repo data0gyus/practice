@@ -887,3 +887,79 @@ def solution(numLog):
         elif diff == -10:
             answer += 'a'
     return answer
+
+# 마지막 두 원소
+
+
+def solution(num_list):
+    answer = []
+    for i in num_list:
+        answer.append(i)
+    # for문 대신에
+    # answer = num_list도 가능
+    if num_list[-1] > num_list[-2]:
+        answer.append(num_list[-1] - num_list[-2])
+    else:
+        answer.append(num_list[-1] * 2)
+
+    return answer
+
+# 원소들의 곱과 합
+
+
+def solution(num_list):
+    mul = 1
+    add = 0
+    for i in num_list:
+        mul *= i
+        add += i
+    if mul < add * add:
+        # if mul < add**2
+        return 1
+    else:
+        return 0
+
+
+# 문자열 돌리기
+str = input()
+str = list(str)
+for i in str:
+    print(i)
+
+for a in input():
+    print(a)
+
+# l로 만들기
+
+
+def solution(myString):
+    chars = {"a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i": 8, "j": 9, "k": 10, "l": 11, "m": 12,
+             "n": 13, "o": 14, "p": 15, "q": 16, "r": 17, "s": 18, "t": 19, "u": 20, "v": 21, "w": 22, "x": 23, "y": 24, "z": 25}
+    char = ""
+
+    for i in myString:
+        if chars[i] < 11:
+            i = "l"
+        char += i
+
+    return char
+
+
+def solution(myString):
+    answer = ''
+    for i in myString:
+        if i < "l":
+            answer += 'l'
+        else:
+            answer += i
+    return answer
+
+# 특이한 이차원 배열 1
+
+
+def solution(n):
+    answer = [[0 for i in range(n)] for j in range(n)]
+    # answer = [[0]*n for _ in range(n)] : _(언더바) 반복을 수행하되, 변수 값이 필요 없을 때 사용 가능
+    for i in range(n):
+        answer[i][i] = 1
+    return answer
