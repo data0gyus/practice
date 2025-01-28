@@ -1027,3 +1027,56 @@ print(f'{a}+{b}={a+b}')
 
 a, b = map(int, input().strip().split(''))
 print(a, '+', b, '=', a+b)
+
+# 특별한 이차원 배열 2
+
+
+def solution(arr):
+    for i in range(len(arr)):
+        for j in range(len(arr)):
+            if arr[i][j] != arr[j][i]:
+                return 0
+    return 1
+
+# flag에 따라 다른 값 반환하기
+
+
+def solution(a, b, flag):
+    if int(flag) == 1:
+        return a + b
+    else:
+        return a - b
+
+
+def solution(a, b, flag):
+    return a+b if flag else a-b
+
+# 이어 붙인 수
+
+
+def solution(num_list):
+    even = ''
+    odd = ''
+    for i in num_list:
+        if i % 2 == 0:
+            even += str(i)
+        else:
+            odd += str(i)
+    return int(even) + int(odd)
+
+# 더 크게 합치기
+
+
+def solution(a, b):
+    q = int(str(a) + str(b))
+    w = int(str(b) + str(a))
+
+    if q > w:
+        return q
+    else:
+        return w
+
+
+def solution(a, b):
+    return int(max(f"{a}{b}", f"{b}{a}"))
+    # return int(max(f'{a}{b}', f'{b}{a}')) 도 가능
