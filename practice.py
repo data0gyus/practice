@@ -963,3 +963,67 @@ def solution(n):
     for i in range(n):
         answer[i][i] = 1
     return answer
+
+# 간단한 식 계산하기
+
+
+def solution(binomial):
+    a, op, b = binomial.split()
+    if op == '+':
+        return int(a) + int(b)
+    if op == '-':
+        return int(a) - int(b)
+    if op == '*':
+        return int(a) * int(b)
+
+# 주사위 게임 1
+
+
+def solution(a, b):
+    if a % 2 == 0 and b % 2 == 0:
+        return abs(a-b)
+    elif a % 2 == 0 or b % 2 == 0:
+        return 2 * (a+b)
+    elif a % 2 != 0 and b % 2 != 0:
+        return a**2 + b ** 2
+
+# 조건에 맞게 수열 변환하기 3
+
+
+def solution(arr, k):
+    answer = []
+    if k % 2 == 0:
+        for i in arr:
+            answer.append(i+k)
+        return answer
+    else:
+        for i in arr:
+            answer.append(i*k)
+        return answer
+
+# 9로 나눈 나머지
+
+
+def solution(number):
+    a = 0
+    num = list(number)
+    # 굳이 안해도 됨
+    for i in num:
+        a += int(i)
+    return a % 9
+
+
+def solution(number):
+    return int(number) % 9
+
+
+def solution(number):
+    return sum(map(int, number)) % 9
+
+
+# 덧셈식 출력하기
+a, b = map(int, input().strip().split(''))
+print(f'{a}+{b}={a+b}')
+
+a, b = map(int, input().strip().split(''))
+print(a, '+', b, '=', a+b)
