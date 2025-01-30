@@ -1080,3 +1080,55 @@ def solution(a, b):
 def solution(a, b):
     return int(max(f"{a}{b}", f"{b}{a}"))
     # return int(max(f'{a}{b}', f'{b}{a}')) 도 가능
+
+# 배열 만들기 3
+def solution(arr, intervals):
+    a1, b1 = intervals[0]
+    a2, b2 = intervals[1]
+    return arr[a1:b1+1]+ arr[a2:b2+1]
+
+def solution(arr, intervals):
+    answer = []
+    for a,b in intervals: 
+        answer +=arr[a:b+1]
+    return answer
+
+def solution(arr, intervals):
+    return arr[intervals[0][0]:intervals[0][1]+1 ] + arr[intervals[1][0]:intervals[1][1]+1]
+
+# 주사위 게임2
+def solution(a, b, c):
+    if a == b == c:
+        return (a+b+c) * (a**2+b**2+c**2) * (a**3+b**3+c**3)
+    elif a != b and a != c and b != c:
+        return a+b+c
+    elif a == b != c or a == c != b or b == c != a:
+        return (a+b+c) * (a**2+b**2+c**2)
+
+def solution(a,b,c):
+    check = len(set([a,b,c]))
+    if check == 1:
+        return 3*a * 3*(a**2) * 3*(a**3)
+    elif check == 2:
+        return (a+b+c) * (a**2+b**2+c**2)
+    else: return a+b+c
+    
+# 문자열 잘라서 정리하기
+def solution(myString):
+    str = list(filter(None,myString.split('x')))
+    return sorted(str)
+
+def solution(myString):
+    return sorted(i for i in myString.split('x') if i)
+
+# 이차원 배열 대각선 순회하기
+def solution(board, k):
+    answer = []
+    #total_sum = 0
+    for i in range(len(board)):
+        for j in range(len(board[i])):
+            if i+j <= k:
+                answer.append(board[i][j])
+                # total_sum += board[i][j]
+    return sum(answer)
+    # return total_sum
