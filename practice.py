@@ -759,7 +759,7 @@ def solution(my_string, is_prefix):
 
 
 def solution(my_string, is_prefix):
-    return int(my_string.startwith(is_prefix))
+    return int(my_string.istartwth(is_prefix))
 
 # 문자열 앞의 n글자
 
@@ -1184,3 +1184,179 @@ def solution(arr, queries):
         for i in range(l, r+1):
             arr[i] += 1
     return arr
+
+# 글자 지우기
+
+
+def solution(my_string, indices):
+    str = list(my_string)
+    indices.sort(reverse=True)
+
+    for idx in indices:
+        del str[idx]
+    return ''.join(str)
+
+
+def solution(my_string, indices):
+    answer = ''
+    for i in range(len(my_string)):
+        if i not in indices:
+            answer += my_string[i]
+    return answer
+
+# 세로 읽기
+
+
+def solution(my_string, m, c):
+    answer = ''
+    for i in range(0, len(my_string), m):
+        answer += my_string[i:i+m][c-1]
+    return answer
+
+
+def solution(my_string, m, c):
+    answer = ''
+    mystr = [list(map(str, my_string[i:i+m]))
+             for i in range(0, len(my_string), m)]
+    for i in range(len(mystr)):
+        answer += mystr[i][c-1]
+    return answer
+
+# 등차수열의 특정한 항만 더하기
+
+
+def solution(a, d, included):
+    answer = 0
+    tmp = []
+    for i in range(0, len(included)):
+        tmp.append(a+(d*i))
+    # 위에 for문은 굳이 있을 필요 없이 answer에서 더해도 충분
+
+    for j in range(len(included)):
+        if int(included[j-1]) == 1:
+            # if included[j] == True:
+            answer += tmp[j-1]
+            # answer += a+i*d
+    return answer
+
+
+def solution(a, d, included):
+    answer = 0
+    for i in range(len(included)):
+        answer += (a+d*i) * int(included[i])
+    return answer
+
+# 문자열 섞기
+
+
+def solution(str1, str2):
+    answer = ''
+    for i in range(len(str1)):
+        answer += str1[i] + str2[i]
+    return answer
+
+# 배열의 길이를 2의 거듭제곱으로 만들기
+
+
+def solution(arr):
+    a = len(arr)
+    while a & a-1 != 0:
+        arr.append(0)
+        a += 1
+    return arr
+
+# 빈 배열에 추가, 삭제하기
+
+
+def solution(arr, flag):
+    answer = []
+    for i in range(len(flag)):
+        if flag[i] == True:
+            for j in range(arr[i]*2):
+                answer.append(arr[i])
+            # answer += [arr[i]]* arr[i] * 2
+            # answer.extend([arr[i]] * (arr[i] * 2))
+        else:
+            for j in range(arr[i]):
+                answer.pop()
+            # answer = answer[:-arr[i]]
+    return answer
+
+
+def solution(arr, flag):
+    arr1 = []
+    for i, j in zip(arr, flag):
+        if j:
+            arr1 += [i] * i * 2
+        else:
+            arr1 = arr1[:-i]
+    return arr1
+
+# 문자열이 몇 번 등장하는지 세기
+
+
+def solution(myString, pat):
+    cnt = 0
+    a = len(pat)
+    for i in range(len(myString)):
+        if myString[i:i+a] == pat:
+            cnt += 1
+    return cnt
+
+
+def solution(myString, pat):
+    answer = 0
+    for i, x in enumerate(myString):
+        if myString[i:].startswith(pat):
+            answer += 1
+    return answer
+
+
+def solution(myString, pat):
+    end = myString.rfind(pat)
+
+    return myString[:end + len(pat)]
+# rfind : 오른쪽부터 (끝부분부터) 주어진 문자열을 찾기 시작함
+# rindex : 오른쪽부터 (끝부분부터) 주어진 문자를 찾기 시작함
+
+# 1로 만들기
+
+
+def solution(num_list):
+    answer = 0
+    for i in num_list:
+        while i > 1:
+            if i % 2 == 0:
+                answer += 1
+                i = i // 2
+            else:
+                answer += 1
+                i = (i-1) // 2
+    return answer
+
+# 문자열 뒤집기
+
+
+def solution(my_string, s, e):
+    for i in range(len(my_string)):
+        str = list[my_string[s:e]]
+        str.reverse()
+    return my_string[:s] + ''.join(str) + my_string[e+1:]
+
+
+def solution(my_string, s, e):
+    return my_string[:s]+my_string[s:e+1][::-1]+my_string[e+1:]
+
+# 배열 만들기
+
+
+def solution(intStrs, k, s, l):
+    answer = []
+    for i in intStrs:
+        if int(i[s:s+l]) > k:
+            answer.append(int(i[s:s+l]))
+    return answer
+
+
+def solution(intStrs, k, s, l):
+    return [int(intStrs[s:s+l]) for intStrs in intStrs if int(intStrs[s:s+l]) > k]
