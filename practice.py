@@ -1360,3 +1360,52 @@ def solution(intStrs, k, s, l):
 
 def solution(intStrs, k, s, l):
     return [int(intStrs[s:s+l]) for intStrs in intStrs if int(intStrs[s:s+l]) > k]
+
+# 수열과 구간 쿼리 3
+
+
+def solution(arr, queries):
+    for i in queries:
+        arr[i[0]], arr[i[1]] = arr[i[1]], arr[i[0]]
+    return arr
+
+
+def solution(arr, queries):
+    for a, b in queries:
+        arr[a], arr[b] = arr[b], arr[a]
+    return arr
+
+# 문자열 묶기
+
+
+def solution(strArr):
+    answer = []
+    d = []
+    for i in strArr:
+        d.append(len(i))
+    # d= [len(i) for i in strARr]
+    for x in set(d):
+        answer.append(d.count(x))
+    return max(answer)
+
+# 세 개의 구분자
+
+
+def solution(myStr):
+    str = myStr.replace('b', 'a')
+    str = str.replace('c', 'a')
+    x = list(filter(None, str.split('a')))
+    return x if x else ["EMPTY"]
+
+
+def solution(myStr):
+    str = myStr.replace('b', 'a')
+    str = str.replace('c', 'a')
+    str = str.split('a')
+    answer = []
+    for x in str:
+        if x:
+            answer.append(x)
+    if not answer:
+        return ["EMPTY"]
+    return answer
