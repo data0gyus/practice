@@ -1409,3 +1409,471 @@ def solution(myStr):
     if not answer:
         return ["EMPTY"]
     return answer
+
+
+# 2의 영역
+def solution(arr):
+    answer = []
+    d = []
+    for i, v in enumerate(arr):
+        if v == 2:
+            answer.append(i)
+    if not answer:
+        return [-1]
+    else:
+        for x in range(min(answer), max(answer)+1):
+            d.append(arr[x])
+        return d
+
+
+def solution(arr):
+    d = []
+    if 2 not in arr:
+        return [-1]
+    else:
+        for i in range(0, len(arr)):
+            if arr[i] == 2:
+                d.append(i)
+    return arr[d[0]:d[-1]+1]
+
+# 리스트 자르기
+
+
+def solution(n, slicer, num_list):
+    # a, b, c = slicer
+    answer = []
+    if n == 1:
+        return num_list[:slicer[1]+1]
+    elif n == 2:
+        return num_list[slicer[0]:]
+    elif n == 3:
+        return num_list[slicer[0]:slicer[1]+1]
+    # else:
+    #   return num_list[slicer[0]:slicer[1]+1:slicer[2]]
+    elif n == 4:
+        for i in range(slicer[0], slicer[1]+1, slicer[2]):
+            answer.append(num_list[i])
+        return answer
+
+# 간단한 논리연산
+
+
+def solution(x1, x2, x3, x4):
+    return (x1 | x2) & (x3 | x4)
+    # return (x1 or x2) and (x3 or x4)
+
+# 커피 심부름
+
+
+def solution(order):
+    d = [0] * 2
+    # answer = 0
+    for i in order:
+        if 'latter' in i:
+            d[1] += 1
+            # answer += 5000
+        else:
+            d[0] += 1
+            # answer += 4500
+    return 4500*d[0] + 5000*d[1]
+    # return answer
+
+# 조건에 맞게 수열 변환하기 2
+
+
+def solution(arr):
+    answer = 0
+    while 1:
+        new = []
+        for i in arr:
+            if i >= 50 and i % 2 == 0:
+                new.append(i//2)
+            elif i < 50 and i % 2 == 1:
+                new.append(i * 2 + 1)
+            else:
+                new.append(i)
+        if arr == new:
+            return answer
+        else:
+            answer += 1
+            new = arr
+
+# qr code
+
+
+def solution(q, r, code):
+    # answer = ''
+    d = []
+    for i, v in enumerate(code):
+        if i % q == r:
+            d.append(v)
+            # answer += v
+    return ''.join(d)
+    # return answer
+
+
+def solution(q, r, code):
+    return code[r::q]
+
+
+def solution(q, r, code):
+    return ''.join(s for i, s in enumerate(code) if i % q == r)
+
+# 수열과 구간 쿼리 4
+
+
+def solution(arr, queries):
+    for i in queries:
+        for x in range(i[0], i[1]+1):
+            if x % i[2] == 0:
+                arr[x] = arr[x] + 1
+    return arr
+
+
+def solution(arr, queries):
+    for s, e, k in queries:
+        for i in range(s, e+1):
+            if i % k == 0:
+                arr[i] += 1
+    return arr
+
+# 배열 만들기 6
+
+
+def solution(arr):
+    answer = []
+    for i in arr:
+        if not answer:
+            answer.append(i)
+        elif answer[-1] == i:
+            del answer[-1]
+        elif answer[-1] != i:
+            answer.append(i)
+    if not answer:
+        return [-1]
+    return answer
+
+
+def solution(arr):
+    answer = []
+    i = 0
+    while i < len(arr):
+        if not answer:
+            answer.append(arr[i])
+        elif answer[-1] == arr[i]:
+            answer.pop()
+        else:
+            answer.append(arr[i])
+        i += 1
+    return answer if answer else [-1]
+
+# 왼쪽 오른쪽
+
+
+def solution(str_list):
+    answer = []
+    for i, v in enumerate(str_list):
+        if v == 'l':
+            answer = str_list[:i]
+            break
+        elif v == 'r':
+            answer = str_list[i+1:]
+            break
+    return answer
+
+# 문자 개수 새기
+
+
+def solution(my_string):
+    return [my_string.count(c) for c in 'abcdefghijklmnopqrstuvwxyz'.upper()+'abcdefghijklmnopqrstuvwxyz']
+
+# 배열 만들기 4
+
+
+def solution(arr):
+    stk = []
+    i = 0
+    while i < len(arr):
+        if not stk:
+            stk.append(arr[i])
+            i += 1
+        # else:
+         #   if stk[-1] < arr[i]:
+          #      stk.append(arr[i])
+           #     i += 1
+            # else:
+            #   stk.pop()
+        elif stk[-1] < arr[i]:
+            stk.append(arr[i])
+            i += 1
+        elif stk[-1] >= arr[i]:
+            stk.pop()
+    return stk
+
+# 문자열 여러 번 뒤집기
+
+
+def solution(my_string, queries):
+    for a, b in queries:
+        str = list(my_string)
+        str = str[a:b+1]
+        str.reverse()
+        my_string = my_string[:a] + ''.join(str) + my_string[b+1:]
+    return my_string
+
+
+def solution(my_string, queries):
+    answer = list(my_string)
+    for s, e in queries:
+        answer[s:e+1] = answer[s:e+1][::-1]
+    return ''.join(answer)
+
+# 조건 문자열
+
+
+def solution(ineq, eq, n, m):
+    if ineq == "<":
+        if eq == "=":
+            return 1 if n <= m else 0
+        elif eq == "!":
+            return 1 if n < m else 0
+    elif ineq == ">":
+        if eq == "=":
+            return 1 if n >= m else 0
+        elif eq == "!":
+            return 1 if n > m else 0
+
+# 무작위로 k개의 수 뽑기
+
+
+def solution(arr, k):
+    answer = []
+    for i in arr:
+        if i not in answer:
+            answer.append(i)
+        else:
+            pass
+    if len(answer) < k:
+        for _ in range(k - len(answer)):
+            answer.append(-1)
+    else:
+        answer = answer[:k]
+    return answer
+
+
+def solution(arr, k):
+    answer = []
+    for i in arr:
+        if i not in answer:
+            answer.append(i)
+        if len(answer) == k:
+            break
+
+    return answer + [-1] * (k - len(answer))
+
+# 수열과 구간 쿼리 2
+
+
+def solution(arr, queries):
+    answer = []
+    for a, b, c in queries:
+        d = []
+        for i in arr[a:b+1]:
+            if i > c:
+                d.append(i)
+        answer.append(-1 if not d else min(d))
+    return answer
+
+# 정사각형으로 만들기
+
+
+def solution(arr):
+    a = len(arr)
+    b = len(arr[0])
+
+    if a > b:
+        for i in range(a):
+            arr[i].extend([0] * (a-b))
+            # for j in range(a-b):
+            # arr[i].append(0)
+    elif b > a:
+        for _ in range(b-a):
+            arr.append([0]*b)
+    return arr
+
+
+def solution(arr):  # 미리 배열 만들기
+    answer = []
+    x = len(arr)
+    y = len(arr[0])
+    m = max(x, y)
+
+    answer = [[0]*m for i in range(m)]
+
+    for i in range(x):
+        for j in range(y):
+            answer[i][j] = arr[i][j]
+
+    return answer
+
+# 그림 확대
+
+
+def solution(picture, k):
+    answer = []
+    for row in picture:  # 이미지 한줄 가져오기
+        a = ''
+        for pixel in row:
+            a += pixel * k  # 한 픽셀을 k배 만큼 가로로 늘리기
+
+        for _ in range(k):
+            answer.append(a)  # 가로로 늘려진 한 줄을 k배 만큼 세로로 늘리기
+    return answer
+
+
+def solution(picture, k):
+    answer = []
+    for i in range(len(picture)):
+        answer += [picture[i].replace('.', '.'*k).replace('x', 'x'*k)] * k
+    return answer
+
+# 문자열 겹쳐쓰기
+
+
+def solution(my_string, overwrite_string, s):
+    return my_string[:s] + overwrite_string + my_string[s+len(overwrite_string):]
+
+
+def solution(my_string, overwrite_string, s):
+    str = list(my_string)
+    str[s:s+len(overwrite_string)] = overwrite_string
+    return ''.join(str)
+
+# 전국 대회 선발 고사
+
+
+def solution(rank, attendance):
+    d = []
+    for i, v in enumerate(rank):
+        if attendance[i] == True:
+            d.append([v, i])
+    d.sort()
+
+    a = d[0][1]
+    b = d[1][1]
+    c = d[2][1]
+    return 10000 * a + 100 * b + c
+
+
+# 대소문자 바꿔서 출력하기
+str = input()
+for i in str:
+    if i.isupper() == True:
+        print(i.lower(), end="")
+    else:
+        print(i.upper(), end="")
+
+# 배열 만들기 2
+
+
+def solution(l, r):
+    answer = []
+    for i in range(l, r+1):
+        check = True
+        for s in str(i):
+            if s != '5' and s != '0':
+                check = False
+                break
+        if check == True:
+            answer.append(i)
+
+    if not answer:
+        return [-1]
+    return answer
+
+# 코드 처리하기
+
+
+def solution(code):
+    a = ''
+    mode = 0
+    for i in range(len(code)):
+        if mode == 0:
+            if code[i] != '1' and i % 2 == 0:
+                a += code[i]
+            elif code[i] == '1':
+                mode = 1
+        else:
+            if code[i] != '1' and i % 2 == 1:
+                a += code[i]
+            elif code[i] == '1':
+                mode = 0
+    if a == '':
+        return 'EMPTY'
+    return a
+
+# 배열 조각하기
+
+
+def solution(arr, query):
+    for i in range(len(query)):
+        if i % 2 == 0:
+            arr = arr[:query[i]+1]
+        else:
+            arr = arr[query[i]:]
+    return arr
+
+# 주사위 게임 3
+
+
+def solution(a, b, c, d):
+    arr = [a, b, c, d]
+    cnt = [arr.count(item) for item in arr]
+
+    if max(cnt) == 4:
+        return a*1111
+
+    elif max(cnt) == 3:
+        return (10 * (arr[cnt.index(3)]) + (arr[cnt.index(1)]))**2
+
+    elif max(cnt) == 2:
+        if 1 in cnt:
+            return arr[cnt.index(1)] * arr[cnt.index(1, cnt.index(1)+1, 4)]
+        else:
+            for item in arr:
+                if a != item:
+                    return (a+item) * abs(a-item)
+
+    else:
+        return min(arr)
+
+# 정수를 나선형으로 배치하기
+
+
+def solution(n):
+    if n == 1:
+        return [[1]]
+
+    arr = [[0]*n for _ in range(n)]
+    x = 0
+    y = 0
+    dir = 'r'
+    for i in range(n*n):
+        arr[x][y] = i + 1
+        if dir == 'r':
+            y += 1
+            if y == n-1 or arr[x][y+1] != 0:
+                dir = 'd'
+        elif dir == 'd':
+            x += 1
+            if x == n-1 or arr[x+1][y] != 0:
+                dir = 'l'
+        elif dir == 'l':
+            y -= 1
+            if y == 0 or arr[x][y-1] != 0:
+                dir = 'u'
+        elif dir == 'u':
+            x -= 1
+            if x == n-1 or arr[x-1][y] != 0:
+                dir = 'r'
+    return arr
