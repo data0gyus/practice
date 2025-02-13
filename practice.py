@@ -837,8 +837,6 @@ def solution(n):
             n = 3 * n + 1
     answer.append(n)
     return answer
-
-"""
 # 수 조작하기 1
 
 
@@ -1684,6 +1682,8 @@ def solution(arr, queries):
         answer.append(-1 if not d else min(d))
     return answer
 
+"""
+
 # 정사각형으로 만들기
 
 
@@ -1877,3 +1877,34 @@ def solution(n):
             if x == n-1 or arr[x-1][y] != 0:
                 dir = 'r'
     return arr
+
+
+# 문자열 정렬하기 1
+def solution(my_string):
+    answer = []
+    for i in my_string:
+        if i.isdigit():
+            answer.append(int(i))
+    answer.sort()
+    return answer
+
+
+def solution(my_string):
+    return sorted([int(i) for i in my_string if i.isdigit()])
+
+
+# 암호 해독
+def solution(cipher, code):
+    answer = ''
+    for i in range(code-1, len(cipher), code):
+        answer += cipher[i]
+    return answer
+
+
+def solution(cipher, code):
+    answer = cipher[code-1::code]
+    return answer
+
+
+def solution(cipher, code):
+    return [cipher[code-1::code]]
