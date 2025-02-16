@@ -1908,3 +1908,35 @@ def solution(cipher, code):
 
 def solution(cipher, code):
     return [cipher[code-1::code]]
+
+# 주사위의 개수
+
+
+def solution(box, n):
+    a = 0
+    b = 1
+    for i in box:
+        a = i // n
+        b *= a
+    return b
+
+
+def solution(box, n):
+    x, y, z = box
+    return (x//n) * (y // n) * (z // n)
+
+# 문자열 정렬하기(2)
+
+
+def solution(my_string):
+    str = sorted(my_string.lower())
+    return ''.join(str)
+
+# 피자 나눠 먹기(2)
+
+
+def solution(n):
+    i = 1
+    while (6 * i) % n != 0:
+        i += 1
+    return i
